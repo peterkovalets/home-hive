@@ -14,7 +14,8 @@ const StyledAuthLayout = styled.main`
 
 const Wrapper = styled.div`
   padding: 2.4rem 4rem;
-  min-width: 48rem;
+  max-width: 48rem;
+  width: 100%;
   background-color: var(--color-gray-200);
   border-radius: var(--border-radius-sm);
 
