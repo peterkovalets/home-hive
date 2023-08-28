@@ -47,7 +47,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: var(--color-gray-50);
+    background-color: var(--color-gray-100);
     color: var(--color-gray-700);
     font-family: 'Poppins', sans-serif;
     font-size: 1.6rem;
@@ -70,6 +70,10 @@ const GlobalStyles = createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  *:disabled {
+    cursor: not-allowed;
   }
 `;
 

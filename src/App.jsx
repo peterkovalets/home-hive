@@ -1,7 +1,12 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import GlobalStyles from './styles/GlobalStyles';
 import SpinnerFullPage from './ui/SpinnerFullPage';
+import ProtectedRoute from './ui/ProtectedRoute';
 
 const AppLayout = lazy(() => import('./ui/AppLayout'));
 const AuthLayout = lazy(() => import('./ui/AuthLayout'));
@@ -10,14 +15,30 @@ const Register = lazy(() => import('./pages/Register'));
 const Login = lazy(() => import('./pages/Login'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
+
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+
       <GlobalStyles />
       <BrowserRouter>
         <Suspense fallback={<SpinnerFullPage />}>
           <Routes>
-            <Route element={<AppLayout />}>
+            <Route
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<Home />} />
             </Route>
             <Route element={<AuthLayout />}>
@@ -28,7 +49,9 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-    </>
+
+      <ToastContainer position="top-center" />
+    </QueryClientProvider>
   );
 }
 

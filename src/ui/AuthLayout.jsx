@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   padding: 2.4rem 4rem;
   max-width: 48rem;
   width: 100%;
-  background-color: var(--color-gray-200);
+  background-color: var(--color-gray-0);
   border-radius: var(--border-radius-sm);
 
   display: flex;

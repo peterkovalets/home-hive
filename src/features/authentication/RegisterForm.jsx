@@ -4,13 +4,19 @@ import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 import LinkButton from '../../ui/LinkButton';
+import { useAuthRedirect } from './useAuthRedirect';
+import { useRegister } from './useRegister';
 
 function RegisterForm() {
-  const { register, handleSubmit, getValues, formState } = useForm();
+  useAuthRedirect();
+  const { register: registerAccount, isLoading } = useRegister();
+  const { register, handleSubmit, getValues, formState, reset } = useForm();
   const { errors } = formState;
 
   function onSubmit(data) {
-    console.log(data);
+    registerAccount(data, {
+      onSettled: () => reset(),
+    });
   }
 
   return (
@@ -19,6 +25,7 @@ function RegisterForm() {
         <Input
           type="text"
           error={errors?.fullName?.message}
+          disabled={isLoading}
           {...register('fullName', {
             required: 'This field is required',
           })}
@@ -28,6 +35,7 @@ function RegisterForm() {
         <Input
           type="email"
           error={errors?.email?.message}
+          disabled={isLoading}
           {...register('email', {
             required: 'This field is required',
             pattern: {
@@ -42,6 +50,7 @@ function RegisterForm() {
         <Input
           type="password"
           error={errors?.password?.message}
+          disabled={isLoading}
           {...register('password', {
             required: 'This field is required',
             minLength: {
@@ -54,10 +63,12 @@ function RegisterForm() {
       <FormRow
         label="Confirm password"
         error={errors?.passwordConfirm?.message}
+        disabled={isLoading}
       >
         <Input
           type="password"
           error={errors?.passwordConfirm?.message}
+          disabled={isLoading}
           {...register('passwordConfirm', {
             required: 'This field is required',
             validate: (value) =>
@@ -68,7 +79,7 @@ function RegisterForm() {
       <p>
         Already have an account? <LinkButton to="/login">Login</LinkButton>
       </p>
-      <Button>Create account</Button>
+      <Button disabled={isLoading}>Create account</Button>
     </Form>
   );
 }

@@ -8,8 +8,12 @@ const Button = styled.button`
   border: none;
   border-radius: var(--border-radius-sm);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--color-brand-500);
+  }
+
+  &:disabled {
+    opacity: 0.7;
   }
 `;
 
