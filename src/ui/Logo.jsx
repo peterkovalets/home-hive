@@ -5,7 +5,7 @@ const StyledLogo = styled.div`
 `;
 
 const Heading = styled.h3`
-  font-size: 4rem;
+  font-size: 3.2rem;
 `;
 
 function Logo() {
