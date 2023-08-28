@@ -3,6 +3,7 @@ import GlobalStyles from './styles/GlobalStyles';
 
 import AuthLayout from './ui/AuthLayout';
 import Register from './pages/Register';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route element={<AuthLayout />}>
             <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
       </BrowserRouter>

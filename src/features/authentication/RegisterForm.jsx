@@ -18,7 +18,7 @@ function RegisterForm() {
       <FormRow label="Full name" error={errors?.fullName?.message}>
         <Input
           type="text"
-          error={Boolean(errors?.fullName?.message)}
+          error={errors?.fullName?.message}
           {...register('fullName', {
             required: 'This field is required',
           })}
@@ -27,7 +27,7 @@ function RegisterForm() {
       <FormRow label="Email" error={errors?.email?.message}>
         <Input
           type="email"
-          error={Boolean(errors?.email?.message)}
+          error={errors?.email?.message}
           {...register('email', {
             required: 'This field is required',
             pattern: {
@@ -41,7 +41,7 @@ function RegisterForm() {
       <FormRow label="Password" error={errors?.password?.message}>
         <Input
           type="password"
-          error={Boolean(errors?.password?.message)}
+          error={errors?.password?.message}
           {...register('password', {
             required: 'This field is required',
             minLength: {
@@ -57,7 +57,7 @@ function RegisterForm() {
       >
         <Input
           type="password"
-          error={Boolean(errors?.passwordConfirm?.message)}
+          error={errors?.passwordConfirm?.message}
           {...register('passwordConfirm', {
             required: 'This field is required',
             validate: (value) =>
