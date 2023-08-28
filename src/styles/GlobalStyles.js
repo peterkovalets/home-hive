@@ -75,6 +75,10 @@ const GlobalStyles = createGlobalStyle`
   *:disabled {
     cursor: not-allowed;
   }
+
+  ul {
+    list-style: none;
+  }
 `;
 
 export default GlobalStyles;
