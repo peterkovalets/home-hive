@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
@@ -10,7 +10,9 @@ import ProtectedRoute from './ui/ProtectedRoute';
 
 const AppLayout = lazy(() => import('./ui/AppLayout'));
 const AuthLayout = lazy(() => import('./ui/AuthLayout'));
-const Home = lazy(() => import('./pages/Home'));
+const Explore = lazy(() => import('./pages/Explore'));
+const Offers = lazy(() => import('./pages/Offers'));
+const Profile = lazy(() => import('./pages/Profile'));
 const Register = lazy(() => import('./pages/Register'));
 const Login = lazy(() => import('./pages/Login'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -39,7 +41,10 @@ function App() {
                 </ProtectedRoute>
               }
             >
-              <Route index element={<Home />} />
+              <Route index element={<Navigate to="/explore" replace />} />
+              <Route path="explore" element={<Explore />} />
+              <Route path="offers" element={<Offers />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
             <Route element={<AuthLayout />}>
               <Route path="register" element={<Register />} />
