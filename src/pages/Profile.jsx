@@ -1,7 +1,9 @@
+import Heading from '../ui/Heading';
+
 function Profile() {
   return (
     <>
-      <h1>Profile</h1>
+      <Heading as="h1">Profile</Heading>
     </>
   );
 }

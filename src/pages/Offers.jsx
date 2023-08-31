@@ -1,7 +1,9 @@
+import Heading from '../ui/Heading';
+
 function Offers() {
   return (
     <>
-      <h1>Offers</h1>
+      <Heading as="h1">Offers</Heading>
     </>
   );
 }

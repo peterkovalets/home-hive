@@ -1,10 +1,7 @@
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-const StyledCategoryItem = styled(Link)`
-  color: inherit;
-  text-decoration: none;
-
+const StyledCategoryItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -21,10 +18,12 @@ const Image = styled.img`
 
 function CategoryItem({ imgUrl, type }) {
   return (
-    <StyledCategoryItem to={`/categories/${type}`}>
-      <Image src={imgUrl} alt={type} />
-      <p>Places for {type}</p>
-    </StyledCategoryItem>
+    <Link to={`/categories/${type}`}>
+      <StyledCategoryItem>
+        <Image src={imgUrl} alt={type} />
+        <p>Places for {type}</p>
+      </StyledCategoryItem>
+    </Link>
   );
 }
 

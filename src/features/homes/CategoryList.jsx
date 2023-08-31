@@ -1,11 +1,17 @@
 import { styled } from 'styled-components';
 import CategoryItem from './CategoryItem';
+import Heading from '../../ui/Heading';
 
 const StyledCategories = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: start;
   gap: 4.8rem;
+
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 const Section = styled.section`
@@ -14,16 +20,16 @@ const Section = styled.section`
   gap: 1.2rem;
 `;
 
-function Categories() {
+function CategoryList() {
   return (
     <Section>
-      <h3>Categories</h3>
+      <Heading as="h3">Categories</Heading>
       <StyledCategories>
-        <CategoryItem imgUrl="rent.jpg" type="rent" />
-        <CategoryItem imgUrl="sale.jpg" type="sale" />
+        <CategoryItem imgUrl="/rent.jpg" type="rent" />
+        <CategoryItem imgUrl="/sale.jpg" type="sale" />
       </StyledCategories>
     </Section>
   );
 }
 
-export default Categories;
+export default CategoryList;

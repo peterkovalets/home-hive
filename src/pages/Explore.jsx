@@ -1,12 +1,12 @@
-import Categories from '../features/homes/Categories';
+import CategoryList from '../features/homes/CategoryList';
+import Heading from '../ui/Heading';
 import Row from '../ui/Row';
 
 function Explore() {
   return (
     <Row>
-      <h1>Explore</h1>
-
-      <Categories />
+      <Heading as="h1">Explore</Heading>
+      <CategoryList />
     </Row>
   );
 }

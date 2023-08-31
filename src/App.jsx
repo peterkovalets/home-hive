@@ -13,6 +13,7 @@ const AuthLayout = lazy(() => import('./ui/AuthLayout'));
 const Explore = lazy(() => import('./pages/Explore'));
 const Offers = lazy(() => import('./pages/Offers'));
 const Profile = lazy(() => import('./pages/Profile'));
+const Category = lazy(() => import('./pages/Category'));
 const Register = lazy(() => import('./pages/Register'));
 const Login = lazy(() => import('./pages/Login'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -45,6 +46,7 @@ function App() {
               <Route path="explore" element={<Explore />} />
               <Route path="offers" element={<Offers />} />
               <Route path="profile" element={<Profile />} />
+              <Route path="categories/:type" element={<Category />} />
             </Route>
             <Route element={<AuthLayout />}>
               <Route path="register" element={<Register />} />

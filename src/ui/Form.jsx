@@ -6,7 +6,7 @@ const Form = styled.form`
   flex-direction: column;
   gap: 1.2rem;
 
-  & > p {
+  & p {
     text-align: center;
   }
 `;

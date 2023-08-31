@@ -25,6 +25,7 @@ const GlobalStyles = createGlobalStyle`
     --color-gray-800: #1f2937;
     --color-gray-900: #111827;
 
+    --color-red-200: #fecaca;
     --color-red-500: #ef4444;
 
     --border-radius-tiny: 3px;

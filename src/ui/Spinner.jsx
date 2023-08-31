@@ -8,7 +8,9 @@ const rotate = keyframes`
 `;
 
 const Spinner = styled.div`
-  width: 45px;
+  margin: 4.8rem auto;
+
+  width: 4.8rem;
   aspect-ratio: 0.75;
   --c: no-repeat linear-gradient(var(--color-gray-700) 0 0);
   background:
