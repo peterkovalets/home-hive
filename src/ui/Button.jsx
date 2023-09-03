@@ -6,6 +6,7 @@ const Button = styled.button`
   color: var(--color-brand-50);
   border: none;
   border-radius: var(--border-radius-sm);
+  text-decoration: none;
 
   ${(props) =>
     props.size === 'small' &&

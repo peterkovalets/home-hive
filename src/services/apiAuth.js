@@ -6,9 +6,8 @@ export async function register({ fullName, email, password }) {
     password,
     options: {
       data: {
-        fullName,
-        avatar: '',
-        balance: 0,
+        full_name: fullName,
+        avatar_url: '',
       },
     },
   });

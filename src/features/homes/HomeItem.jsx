@@ -12,14 +12,14 @@ const StyledHomeItem = styled.div`
   gap: 3.2rem;
 `;
 
-const Image = styled.img`
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: var(--border-radius-lg);
-`;
+// const Image = styled.img`
+//   display: block;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   object-position: center;
+//   border-radius: var(--border-radius-lg);
+// `;
 
 const Content = styled.div`
   display: flex;
@@ -49,11 +49,10 @@ const Rooms = styled.div`
 function HomeItem({ home }) {
   const {
     id,
-    images,
     name,
-    numBathrooms,
-    numBedrooms,
-    regularPrice,
+    num_bathrooms: numBathrooms,
+    num_bedrooms: numBedrooms,
+    regular_price: regularPrice,
     type,
     address,
   } = home;
@@ -61,10 +60,10 @@ function HomeItem({ home }) {
   return (
     <Link to={`/homes/${id}`}>
       <StyledHomeItem>
-        <Image src={images[0]} alt={name} />
+        {/* <Image src={images[0]} alt={name} /> */}
 
         <Content>
-          <address>{address}</address>
+          <address>{address || 'Address is hidden'}</address>
           <Heading as="h3">{name}</Heading>
           <strong>{`${formatCurrency(regularPrice)} ${
             type === 'rent' ? '/ Month' : ''

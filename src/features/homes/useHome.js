@@ -1,22 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { getHomes } from '../../services/apiHomes';
+import { getHome } from '../../services/apiHomes';
 
-export function useHomes() {
-  const { type } = useParams();
+export function useHome() {
+  const { id } = useParams();
 
   const {
-    data: homes,
+    data: home,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['homes', type],
-    queryFn: () => getHomes(type),
+    queryKey: ['home', id],
+    queryFn: () => getHome(id),
     onError: (err) => {
       toast.error(err.message);
     },
   });
 
-  return { homes, isLoading, error };
+  return { home, isLoading, error };
 }

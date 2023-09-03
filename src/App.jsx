@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import 'leaflet/dist/leaflet.css';
 import GlobalStyles from './styles/GlobalStyles';
 import SpinnerFullPage from './ui/SpinnerFullPage';
 import ProtectedRoute from './ui/ProtectedRoute';
@@ -14,6 +16,7 @@ const Explore = lazy(() => import('./pages/Explore'));
 const Offers = lazy(() => import('./pages/Offers'));
 const Profile = lazy(() => import('./pages/Profile'));
 const Category = lazy(() => import('./pages/Category'));
+const Home = lazy(() => import('./pages/Home'));
 const Register = lazy(() => import('./pages/Register'));
 const Login = lazy(() => import('./pages/Login'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -47,6 +50,7 @@ function App() {
               <Route path="offers" element={<Offers />} />
               <Route path="profile" element={<Profile />} />
               <Route path="categories/:type" element={<Category />} />
+              <Route path="homes/:id" element={<Home />} />
             </Route>
             <Route element={<AuthLayout />}>
               <Route path="register" element={<Register />} />
