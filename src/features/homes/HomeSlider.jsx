@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
+import supabase from '../../services/supabase';
 
 const StyledSlider = styled(Slider)`
   border-radius: var(--border-radius-lg);
@@ -25,7 +26,13 @@ function HomeSlider({ images, name }) {
       <StyledSlider>
         {images.map((image, i) => (
           <Slide index={i} key={image}>
-            <Image src={images[i]} alt={`Photo of ${name}`} />
+            <Image
+              src={
+                supabase.storage.from('home-images').getPublicUrl(images[i])
+                  .data.publicUrl
+              }
+              alt={`Photo of ${name}`}
+            />
           </Slide>
         ))}
       </StyledSlider>

@@ -65,7 +65,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   input,
-  button {
+  button,
+  select {
     font: inherit;
   }
 

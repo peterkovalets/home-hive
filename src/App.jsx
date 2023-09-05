@@ -17,6 +17,7 @@ const Offers = lazy(() => import('./pages/Offers'));
 const Profile = lazy(() => import('./pages/Profile'));
 const Category = lazy(() => import('./pages/Category'));
 const Home = lazy(() => import('./pages/Home'));
+const CreateListing = lazy(() => import('./pages/CreateListing'));
 const Register = lazy(() => import('./pages/Register'));
 const Login = lazy(() => import('./pages/Login'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -51,6 +52,7 @@ function App() {
               <Route path="profile" element={<Profile />} />
               <Route path="categories/:type" element={<Category />} />
               <Route path="homes/:id" element={<Home />} />
+              <Route path="create-listing" element={<CreateListing />} />
             </Route>
             <Route element={<AuthLayout />}>
               <Route path="register" element={<Register />} />

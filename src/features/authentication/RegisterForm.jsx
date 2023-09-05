@@ -24,6 +24,7 @@ function RegisterForm() {
       <FormRow label="Full name" error={errors?.fullName?.message}>
         <Input
           type="text"
+          id="fullName"
           error={errors?.fullName?.message}
           disabled={isLoading}
           {...register('fullName', {
@@ -34,6 +35,7 @@ function RegisterForm() {
       <FormRow label="Email" error={errors?.email?.message}>
         <Input
           type="email"
+          id="email"
           error={errors?.email?.message}
           disabled={isLoading}
           {...register('email', {
@@ -49,6 +51,7 @@ function RegisterForm() {
       <FormRow label="Password" error={errors?.password?.message}>
         <Input
           type="password"
+          id="password"
           error={errors?.password?.message}
           disabled={isLoading}
           {...register('password', {
@@ -67,6 +70,7 @@ function RegisterForm() {
       >
         <Input
           type="password"
+          id="passwordConfirm"
           error={errors?.passwordConfirm?.message}
           disabled={isLoading}
           {...register('passwordConfirm', {

@@ -5,6 +5,7 @@ import Row from '../../ui/Row';
 import HomeLocation from './HomeLocation';
 import Heading from '../../ui/Heading';
 import Button from '../../ui/Button';
+import HomeSlider from './HomeSlider';
 import { useHome } from './useHome';
 import { useTitle } from '../../hooks/useTitle';
 import { formatCurrency } from '../../utils/helpers';
@@ -25,6 +26,7 @@ function HomeDetails() {
     name,
     regular_price: regularPrice,
     address,
+    images,
     num_bedrooms: numBedrooms,
     num_bathrooms: numBathrooms,
     has_parking_spot: hasParkingSpot,
@@ -41,7 +43,7 @@ function HomeDetails() {
 
   return (
     <StyledHomeDetails>
-      {/* <HomeSlider images={images} name={name} /> */}
+      <HomeSlider images={images} name={name} />
 
       <Row>
         <div>

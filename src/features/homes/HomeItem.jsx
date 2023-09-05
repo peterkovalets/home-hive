@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import { MdBathtub, MdBed } from 'react-icons/md';
 import Heading from '../../ui/Heading';
 import { formatCurrency } from '../../utils/helpers';
+import supabase from '../../services/supabase';
 
 const StyledHomeItem = styled.div`
   display: grid;
@@ -12,14 +13,14 @@ const StyledHomeItem = styled.div`
   gap: 3.2rem;
 `;
 
-// const Image = styled.img`
-//   display: block;
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-//   object-position: center;
-//   border-radius: var(--border-radius-lg);
-// `;
+const Image = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--border-radius-lg);
+`;
 
 const Content = styled.div`
   display: flex;
@@ -50,6 +51,7 @@ function HomeItem({ home }) {
   const {
     id,
     name,
+    images,
     num_bathrooms: numBathrooms,
     num_bedrooms: numBedrooms,
     regular_price: regularPrice,
@@ -60,7 +62,13 @@ function HomeItem({ home }) {
   return (
     <Link to={`/homes/${id}`}>
       <StyledHomeItem>
-        {/* <Image src={images[0]} alt={name} /> */}
+        <Image
+          src={
+            supabase.storage.from('home-images').getPublicUrl(images[0]).data
+              .publicUrl
+          }
+          alt={`Photo of ${name}`}
+        />
 
         <Content>
           <address>{address || 'Address is hidden'}</address>
