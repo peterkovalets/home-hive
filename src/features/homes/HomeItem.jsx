@@ -55,6 +55,7 @@ function HomeItem({ home }) {
     num_bathrooms: numBathrooms,
     num_bedrooms: numBedrooms,
     regular_price: regularPrice,
+    discount,
     type,
     address,
   } = home;
@@ -73,7 +74,7 @@ function HomeItem({ home }) {
         <Content>
           <address>{address || 'Address is hidden'}</address>
           <Heading as="h3">{name}</Heading>
-          <strong>{`${formatCurrency(regularPrice)} ${
+          <strong>{`${formatCurrency(regularPrice - discount)} ${
             type === 'rent' ? '/ Month' : ''
           }`}</strong>
           <Rooms>

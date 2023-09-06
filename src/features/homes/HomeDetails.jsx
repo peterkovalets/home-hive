@@ -6,6 +6,7 @@ import HomeLocation from './HomeLocation';
 import Heading from '../../ui/Heading';
 import Button from '../../ui/Button';
 import HomeSlider from './HomeSlider';
+import Tag from '../../ui/Tag';
 import { useHome } from './useHome';
 import { useTitle } from '../../hooks/useTitle';
 import { formatCurrency } from '../../utils/helpers';
@@ -20,11 +21,18 @@ const StyledHomeDetails = styled.div`
   }
 `;
 
+const Tags = styled.div`
+  display: flex;
+  gap: 1.2rem;
+`;
+
 function HomeDetails() {
   const { home, isLoading, error } = useHome();
   const {
     name,
+    type,
     regular_price: regularPrice,
+    discount,
     address,
     images,
     num_bedrooms: numBedrooms,
@@ -52,6 +60,13 @@ function HomeDetails() {
           </Heading>
           <address>{address || 'Address is hidden'}</address>
         </div>
+
+        <Tags>
+          <Tag color="green">For {type}</Tag>
+          {discount > 0 && (
+            <Tag color="blue">{formatCurrency(discount)} discount</Tag>
+          )}
+        </Tags>
 
         <div>
           <p>{numBedrooms} Bedrooms</p>

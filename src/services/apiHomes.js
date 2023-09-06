@@ -4,9 +4,12 @@ export async function getHomes(type) {
   const { data, error } = await supabase
     .from('homes')
     .select(
-      'id, name, type, num_bedrooms, num_bathrooms, regular_price, images, address',
+      'id, name, type, num_bedrooms, num_bathrooms, regular_price, discount, images, address',
     )
-    .eq('type', type);
+    .eq('type', type)
+    .order('created_at', {
+      ascending: false,
+    });
 
   if (error) throw new Error('Could not get homes');
 
@@ -28,7 +31,7 @@ export async function getHome(id) {
 export async function createHome(newHome) {
   const images = [];
 
-  for (const file of newHome.images) {
+  for (const file of Array.from(newHome.images).slice(0, 6)) {
     const filePath = `${Math.random()}-${file.name}`.replaceAll('/', '');
     const { data: fileData, error: fileError } = await supabase.storage
       .from('home-images')
@@ -52,4 +55,20 @@ export async function createHome(newHome) {
   if (homeError) throw new Error('Could not create listing');
 
   return homeData;
+}
+
+export async function getOffers() {
+  const { data, error } = await supabase
+    .from('homes')
+    .select(
+      'id, name, type, num_bedrooms, num_bathrooms, regular_price, discount, images, address',
+    )
+    .eq('offer', true)
+    .order('created_at', {
+      ascending: false,
+    });
+
+  if (error) throw new Error('Could not get offers');
+
+  return data;
 }
