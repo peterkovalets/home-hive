@@ -8,7 +8,7 @@ export function useOffers() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['offers'],
+    queryKey: ['homes', 'offer'],
     queryFn: getOffers,
     onError: (err) => {
       toast.error(err.message);

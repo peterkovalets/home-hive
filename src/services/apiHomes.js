@@ -4,7 +4,7 @@ export async function getHomes(type) {
   const { data, error } = await supabase
     .from('homes')
     .select(
-      'id, name, type, num_bedrooms, num_bathrooms, regular_price, discount, images, address',
+      'id, name, type, num_bedrooms, num_bathrooms, regular_price, discount, images, address, user_id',
     )
     .eq('type', type)
     .order('created_at', {
@@ -57,11 +57,17 @@ export async function createHome(newHome) {
   return homeData;
 }
 
+export async function deleteHome(id) {
+  const { error } = await supabase.from('homes').delete().eq('id', id);
+
+  if (error) throw new Error('Could not delete listing');
+}
+
 export async function getOffers() {
   const { data, error } = await supabase
     .from('homes')
     .select(
-      'id, name, type, num_bedrooms, num_bathrooms, regular_price, discount, images, address',
+      'id, name, type, num_bedrooms, num_bathrooms, regular_price, discount, images, address, user_id',
     )
     .eq('offer', true)
     .order('created_at', {

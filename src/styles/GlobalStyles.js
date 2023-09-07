@@ -25,10 +25,14 @@ const GlobalStyles = createGlobalStyle`
     --color-gray-800: #1f2937;
     --color-gray-900: #111827;
 
+    --color-red-50: #fef2f2;
     --color-red-200: #fecaca;
     --color-red-500: #ef4444;
+    --color-red-600: #dc2626;
     --color-green-400: #4ade80;
     --color-blue-400: #60a5fa;
+
+    --backdrop-color: rgba(0, 0, 0, 0.5);
 
     --border-radius-tiny: 3px;
     --border-radius-sm: 5px;
